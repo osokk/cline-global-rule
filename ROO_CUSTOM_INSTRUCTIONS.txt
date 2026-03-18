@@ -1,0 +1,75 @@
+========================================
+ROO CUSTOM INSTRUCTIONS
+========================================
+
+Copy the text below and paste it into VS Code settings:
+
+---
+
+At the start of EVERY new task or session, before doing anything else:
+
+1. Read ALL files in c:/Users/LENOVO/Projects/cline-global-rules/global/ in order:
+   - 10-anti-loop.md
+   - 20-plink-ssh.md
+   - 30-context-eviction.md
+   - 40-git-sync.md
+   - 50-api-budget.md
+   - 60-documentation-rules.md
+
+2. Read c:/Users/LENOVO/Projects/cline-global-rules/workspace/10-workspace-index.md
+
+3. Identify which project the task is for, then read that project's .clinerules/ files
+
+Do NOT skip this step even if you think you remember the rules from a previous session. Rules change frequently and must be re-read every session.
+
+---
+
+========================================
+HOW TO ADD THIS TO VS CODE
+========================================
+
+METHOD 1: Via Settings UI (Recommended)
+----------------------------------------
+1. Open VS Code
+2. Press Ctrl+, (or Cmd+, on Mac) to open Settings
+3. In the search box at the top, type: roo
+4. Look for: "Roo-cline: Custom Instructions"
+5. Click in the text box
+6. Paste the text above (between the --- lines)
+7. Close settings (it auto-saves)
+
+METHOD 2: Via settings.json (Advanced)
+---------------------------------------
+1. Open VS Code
+2. Press Ctrl+Shift+P (or Cmd+Shift+P on Mac)
+3. Type: "Preferences: Open User Settings (JSON)"
+4. Press Enter
+5. Add this line inside the { } brackets:
+
+"roo-cline.customInstructions": "At the start of EVERY new task or session, before doing anything else:\n\n1. Read ALL files in c:/Users/LENOVO/Projects/cline-global-rules/global/ in order:\n   - 10-anti-loop.md\n   - 20-plink-ssh.md\n   - 30-context-eviction.md\n   - 40-git-sync.md\n   - 50-api-budget.md\n   - 60-documentation-rules.md\n\n2. Read c:/Users/LENOVO/Projects/cline-global-rules/workspace/10-workspace-index.md\n\n3. Identify which project the task is for, then read that project's .clinerules/ files\n\nDo NOT skip this step even if you think you remember the rules from a previous session. Rules change frequently and must be re-read every session."
+
+6. Save the file (Ctrl+S)
+
+========================================
+VERIFICATION
+========================================
+
+After adding the custom instructions:
+
+1. Close and reopen VS Code (or reload window: Ctrl+Shift+P → "Developer: Reload Window")
+2. Start a new Roo task
+3. Check if Roo automatically reads the global rules WITHOUT you typing "read rules first"
+4. If it doesn't, check the settings again to make sure the text was saved correctly
+
+========================================
+ON OTHER MACHINES
+========================================
+
+When you set up Roo on a different machine:
+
+1. Clone cline-global-rules: git clone https://github.com/osokk/cline-global-rules.git
+2. Update the path in Custom Instructions if your Projects directory is different
+3. Set PLINK_PATH environment variable
+4. Restart VS Code
+
+========================================
