@@ -22,6 +22,11 @@ cline-global-rules/
   workspace/                         ← rules specific to the Projects workspace
     10-workspace-index.md
     20-backtest-multiprocessing.md
+  src/                               ← shared utilities and tools
+    llm/                             ← LLM API gateways
+      anthropic_gateway.py           ← Weighted concurrency control for Anthropic API
+      README.md                      ← Usage guide
+      SETUP.md                       ← Setup instructions
 ```
 
 ---
@@ -101,6 +106,46 @@ Or edit `settings.json` directly:
 1. Create a new file in `global/` with the next number (e.g., `70-new-rule.md`)
 2. Update this README to document it
 3. Commit and push
+
+---
+
+## Shared Utilities
+
+### Anthropic API Gateway
+
+The [`src/llm/anthropic_gateway.py`](src/llm/anthropic_gateway.py) module provides a thread-safe gateway for Anthropic API calls with weighted concurrency control.
+
+**Key Features:**
+- **Weighted semaphore**: Heavy calls (2 slots) vs Light calls (1 slot)
+- **Max 3 concurrent slots**: Prevents token burst limits and 429 errors
+- **Global pacing**: 0.8s minimum gap between request starts
+- **Smart backoff**: Only retries on actual limit hits (429, overloaded, etc.)
+- **2-3x faster than serial**: While maintaining safety
+
+**Quick Start:**
+```python
+from cline_global_rules.src.llm.anthropic_gateway import gateway
+
+# Heavy call (long context, research, synthesis)
+response = gateway.create_message(
+    size="heavy",
+    model="claude-sonnet-4-20250514",
+    messages=messages,
+    max_tokens=1400,
+)
+
+# Light call (formatting, extraction, small tasks)
+response = gateway.create_message(
+    size="light",
+    model="claude-sonnet-4-20250514",
+    messages=messages,
+    max_tokens=500,
+)
+```
+
+**Documentation:**
+- [Full Usage Guide](src/llm/README.md) - Detailed examples, tuning, best practices
+- [Setup Instructions](src/llm/SETUP.md) - Installation and rollout guide
 
 ---
 
