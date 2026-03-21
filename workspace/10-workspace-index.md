@@ -37,9 +37,13 @@ This workspace contains multiple projects. Before reading ANY project files or r
 
 ### quant-data-pipeline
 
-- **Purpose:** Binance Futures data ingestion (funding rates + 1m OHLCV) → Backblaze B2
+- **Purpose:** Binance/Bybit Futures data ingestion (funding rates + 1m OHLCV + OI) → Backblaze B2
 - **Key docs:** `quant-data-pipeline/ARCHITECTURE.md`, `quant-data-pipeline/STATUS.md`
-- **VPS:** Hetzner (`46.4.188.166`) — **MEDIUM RISK, data server** ⚠️ Migrated from DO `188.166.255.248` (decommissioned 2026-03-20)
+- **VPS:** Hetzner (`46.4.188.166`) — **MEDIUM RISK, data server**
+  - ⚠️ Migrated from DO `188.166.255.248` (decommissioned 2026-03-20) → Hetzner (2026-03-20)
+  - **Pipeline runs on Hetzner ONLY — do NOT run pipeline scripts locally**
+  - SSH: use `plink.exe` with hostkey `SHA256:eiTqlFJisIFazlv1kh/vXpJQ2cFrfNADlBJqDBl/t/A`
+  - Full SSH notes: `quant-data-pipeline/VPS_SSH_NOTES.md` and `crew_v33/VPS_SSH_NOTES.md`
 - **Git remote:** `git@github.com:osokk/quant-data-pipeline.git` (SSH — no PAT needed on VPS)
 
 ---
@@ -48,7 +52,7 @@ This workspace contains multiple projects. Before reading ANY project files or r
 
 Before working on ANY project in this workspace:
 
-1. **Read ALL files in `c:/Users/LENOVO/Projects/cline-global-rules/global/`** (files 10–60 in order)
+1. **Read ALL files in `c:/Users/LENOVO/Projects/cline-global-rules/global/`** (files 10–70 in order)
 2. **Read this file** (`workspace/10-workspace-index.md`) — you are reading it now
 3. **Identify the project** for the current task
 4. **Read that project's `.clinerules/` files**
@@ -58,6 +62,13 @@ Before working on ANY project in this workspace:
 ---
 
 ## Cross-Project Rules
+
+### exec-01 Server — READ-ONLY by Default
+
+- **exec-01 (`45.32.46.76`) is READ-ONLY** — no writes, modifications, deletions, or executions unless the user explicitly grants write permission in the current conversation turn
+- **NOT subject to auto-approvals** — always pause and ask before any write operation on exec-01
+- Override applies only to the single explicitly approved action; reverts to read-only immediately after
+- Full rule: `cline-global-rules/global/70-exec01-readonly.md`
 
 ### SSH / VPS Access
 
