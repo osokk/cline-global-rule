@@ -9,6 +9,17 @@ This workspace contains multiple projects. Before reading ANY project files or r
 
 ---
 
+## Workspace Root Git Repo
+
+- **Remote:** `https://github.com/osokk/Projects` (private)
+- **Branch:** `main`
+- **Tracks:** workspace-level docs, `scripts/`, `plans/`, `mobile cline rules/`
+- **Does NOT track:** `crew_v33/`, `quant-data-pipeline/`, `cline-global-rules/` (each has own remote — excluded via `.gitignore`)
+- **Required env vars:** `PLINK_PATH`, `HETZNER_ROOT_PW`
+- **Git sync:** `cd C:/Users/LENOVO/Projects && git pull` at session start; `git add -A && git commit && git push` at session end
+
+---
+
 ## Projects in This Workspace
 
 | Project | Description | Clinerules Path | Status |
