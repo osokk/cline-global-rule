@@ -14,7 +14,7 @@ This workspace contains multiple projects. Before reading ANY project files or r
 | Project | Description | Clinerules Path | Status |
 |---------|-------------|----------------|--------|
 | **crew_v33** | Quant strategy research pipeline, AI agent orchestration, live trading bot management | `crew_v33/.clinerules/10-project-rules.md` | ✅ **CANONICAL** — git remote: osokk/crew_v33, branch: main |
-| **crew_v33_git** | (STALE SNAPSHOT — older partial copy) | `crew_v33_git/.clinerules/10-project-rules.md` | ⚠️ **DO NOT USE** — stale copy, use crew_v33 instead |
+| **crew_v33_git** | ~~(STALE SNAPSHOT — older partial copy)~~ | `crew_v33_git/.clinerules/10-project-rules.md` | 🚫 **FULLY DEPRECATED** — verified 2026-03-20. crew_v33/workspace/ is a strict superset. Do not read, do not modify, do not reference. See `crew_v33_git/DEPRECATED.md`. |
 | **quant-data-pipeline** | Binance Futures data ingestion (funding rates + 1m OHLCV) → Backblaze B2 | `quant-data-pipeline/.clinerules/10-project-rules.md` | ✅ Active |
 
 ---
@@ -28,19 +28,19 @@ This workspace contains multiple projects. Before reading ANY project files or r
 - **Live server:** exec-01 (45.32.46.76) — **HIGH RISK, live trading**
 - **Git remote:** osokk/crew_v33
 
-### crew_v33_git (git-tracked canonical copy)
+### crew_v33_git — 🚫 FULLY DEPRECATED (2026-03-20)
 
-- **Purpose:** Same as crew_v33 — this WAS the canonical version with more workspace files
-- **Status:** ⚠️ **STALE SNAPSHOT** — older partial copy, do not use for new work
-- **Key docs:** `crew_v33_git/docs/README_FIRST.md`, `crew_v33_git/CLINE_WORKFLOW_RULES.md`
-- **Action:** If asked to work on crew_v33, use `crew_v33/` NOT `crew_v33_git/`
+- **Status:** **FULLY DEPRECATED** — verified and closed out during MVP-0 (2026-03-20)
+- **Reason:** `crew_v33/workspace/` is a strict superset of `crew_v33_git/workspace/`. All shared files are identical in content. `crew_v33/workspace/` has 16 additional newer files (dated Mar 18–20, 2026) not present in `crew_v33_git/`.
+- **Action:** Do NOT read, modify, or reference any files in `crew_v33_git/`. Use `crew_v33/` for all work.
+- **See:** `crew_v33_git/DEPRECATED.md` for full deprecation record.
 
 ### quant-data-pipeline
 
 - **Purpose:** Binance Futures data ingestion (funding rates + 1m OHLCV) → Backblaze B2
 - **Key docs:** `quant-data-pipeline/ARCHITECTURE.md`, `quant-data-pipeline/STATUS.md`
-- **VPS:** quant-ingestion (188.166.255.248) — **MEDIUM RISK, data server**
-- **Git remote:** (check project for remote URL)
+- **VPS:** Hetzner (`46.4.188.166`) — **MEDIUM RISK, data server** ⚠️ Migrated from DO `188.166.255.248` (decommissioned 2026-03-20)
+- **Git remote:** `git@github.com:osokk/quant-data-pipeline.git` (SSH — no PAT needed on VPS)
 
 ---
 

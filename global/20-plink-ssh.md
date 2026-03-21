@@ -28,11 +28,13 @@ On Windows, the built-in `ssh` command requires interactive password entry. It w
 
 Use the environment variable `%PLINK_PATH%` which should be set on each machine.
 
-**Example for quant-ingestion VPS (188.166.255.248):**
+**Example for quant-data-pipeline VPS — Hetzner (`46.4.188.166`):**
 
 ```cmd
-"%PLINK_PATH%" -ssh -pw d41b0c2c975a62a405f3c68715 -hostkey "ssh-ed25519 255 SHA256:gOejGPcxgH+KwtA4EA49YwZmVOnom3Xuk6rGcz9Bs+U" root@188.166.255.248 "COMMAND HERE" 2>&1
+"%PLINK_PATH%" -ssh -pw <PASSWORD> -hostkey "ssh-ed25519 255 SHA256:eiTqlFJisIFazlv1kh/vXpJQ2cFrfNADlBJqDBl/t/A" root@46.4.188.166 "COMMAND HERE" 2>&1
 ```
+
+> ⚠️ Old DigitalOcean IP `188.166.255.248` is **DECOMMISSIONED** (2026-03-20). Never use it.
 
 **If `%PLINK_PATH%` is not set:** Report to user: "Environment variable PLINK_PATH is not set. Please set it to the full path of plink.exe on this machine."
 
